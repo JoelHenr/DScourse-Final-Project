@@ -30,11 +30,11 @@ print(summary(est.l))
 stargazer(coeftest(est.l, vcovHC),type = "text")
 coeftest(est.l, vcovHC(est.l, type = "HC0", cluster = "group"))
 
-# Fixed Effects 
+# Fixed Effects (FIGURE 2 - IN THE STUDY)
 fe <- clogit(wins~home + strata(gameorder), data =nba.p, method = "exact")
 stargazer(fe, type="text")
 
-# Marginal Effects 
+# Marginal Effects (TABLE 3 - USED IN PAPER)
 logitmfx(est.l, atmean=TRUE, data = nba.p, robust = TRUE)
 logitmfx(est.l, atmean=FALSE, data = nba.p, robust = TRUE)
 
@@ -48,7 +48,7 @@ stargazer(coeftest(est.p, vcovHC), type = "text")
 coeftest(est.p, vcovHC(est.p, type = "HC0", cluster = "group"))
 
 
-# Marginal Effects probit
+# Marginal Effects probit (TABLE 3 - USE IN PAPER)
 probitmfx(est.p, atmean=TRUE, data = nba.p, robust = TRUE)
 probitmfx(est.p, atmean=FALSE, data = nba.p, robust = TRUE)
 
@@ -60,11 +60,11 @@ est.l2 <- glm(game_result ~ game_location + forecast + pts + elo_i + is_playoffs
 print(summary(est.l2))
 stargazer(coeftest(est.l2, vcovHC), type = "text")
 
-# FE
+# FE (FIGURE 1 - IN THE STUDY)
 fe1 <- clogit(wins~home + forecast + pts + elo_i + is_playoffs + strata(gameorder), data =nba.p, method = "exact")
 stargazer(fe1, type="text")
 
-# Marginal Effects logit
+# Marginal Effects logit (TABLE 2 - USE IN PAPER)
 logitmfx(est.l2, atmean=TRUE, data = nba.p, robust = TRUE)
 logitmfx(est.l2, atmean=FALSE, data = nba.p, robust = TRUE)
 
@@ -77,7 +77,7 @@ print(summary(est.p2))
 stargazer(coeftest(est.p2, vcovHC), type = "text")
 
 
-# Marginal Effects probit
+# Marginal Effects probit (TABLE 2 - USE IN PAPER)
 logitmfx(est.p2, atmean=TRUE, data = nba.p, robust = TRUE)
 logitmfx(est.p2, atmean=FALSE, data = nba.p, robust = TRUE)
 
